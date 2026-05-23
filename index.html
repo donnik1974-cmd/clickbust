@@ -479,6 +479,7 @@ h2 .g { color:var(--gold) }
 .about-img {
   position:relative; overflow:hidden;
   border-right:1px solid var(--line);
+  min-height:340px;
 }
 .about-img img {
   width:100%; height:100%;
@@ -1047,37 +1048,134 @@ footer {
    RESPONSIVE
 ───────────────────────────────────────── */
 @media(max-width:900px){
+  /* NAV */
+  nav { padding:0 20px }
+  .nav-links { display:none }
+
+  /* HERO */
   .hero { grid-template-columns:1fr; min-height:auto }
-  .hero-right { border-left:none; border-top:1px solid var(--line); padding:56px 36px }
-  .hero-left { padding:120px 36px 56px }
+  .hero-left { padding:100px 24px 48px }
+  .hero-right { border-left:none; border-top:1px solid var(--line); padding:48px 24px 56px }
+  .hero-bottom-strip { grid-template-columns:repeat(3,1fr) }
+
+  /* WRAP & SECTIONS */
+  .wrap { padding:0 20px }
+  .sec { padding:72px 0 }
+
+  /* PROBLEM */
   .problem-grid { grid-template-columns:1fr }
   .prob-item { border-right:none }
   .prob-item:nth-last-child(-n+2) { border-bottom:1px solid var(--line) }
-  .prob-close { flex-direction:column; gap:16px }
+  .prob-close { flex-direction:column; gap:16px; align-items:flex-start }
   .prob-close-btn { margin-left:0 }
-  .about-split { grid-template-columns:1fr }
-  .about-img { height:260px }
-  .about-body { padding:36px 32px }
+
+  /* ABOUT — stack vertically, image on top with fixed height */
+  .about-split {
+    grid-template-columns:1fr;
+    grid-template-rows:auto auto;
+  }
+  .about-split::before { width:100%; height:2px; top:0; left:0 }
+  .about-img {
+    height:320px;
+    border-right:none;
+    border-bottom:1px solid var(--line);
+  }
+  .about-img img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:top center;
+  }
+  .about-body { padding:32px 24px }
+  .about-name { font-size:32px }
+
+  /* FEATURES */
   .feat-grid { grid-template-columns:1fr }
+
+  /* PROCESS */
+  .proc-row { grid-template-columns:48px 1fr; gap:20px }
+  .proc-num { font-size:36px }
+  .proc-tag { display:none }
+
+  /* NICHES */
   .niche-grid { grid-template-columns:1fr }
+  .niche-item { padding:36px 28px }
+
+  /* LOGOS */
+  .logos-block { padding:36px 20px }
+
+  /* PRICING */
+  .pricing-header { grid-template-columns:1fr; padding:16px 20px }
   .pricing-grid { grid-template-columns:repeat(2,1fr) }
-  .pricing-header { grid-template-columns:1fr }
+
+  /* GUARANTEE */
+  .guarantee { grid-template-columns:1fr; text-align:center; padding:40px 24px }
+  .guarantee::before { width:100%; height:2px; top:0; bottom:auto }
+
+  /* FAQ */
   .faq-split { grid-template-columns:1fr }
-  .faq-left { border-right:none; border-bottom:1px solid var(--line) }
+  .faq-left { border-right:none; border-bottom:1px solid var(--line); padding:36px 24px }
+  .faq-q { padding:20px 24px }
+  .faq-a { padding:0 24px }
+  .faq-item.open .faq-a { padding:0 24px 20px }
+
+  /* CTA */
   .cta-grid { grid-template-columns:1fr }
-  .cta-right { padding:48px 36px }
-  .cta-left { padding:56px 36px }
-  .foot-inner { grid-template-columns:1fr }
+  .cta-left { padding:56px 24px }
+  .cta-right { padding:48px 24px }
+  .cta-right-num { font-size:56px }
+
+  /* FOOTER */
+  footer { padding:44px 20px }
+  .foot-inner { grid-template-columns:1fr; gap:28px }
   .foot-links { text-align:left }
   .foot-links a:hover { transform:translateX(4px) }
-  .wrap { padding:0 24px }
-  .sec { padding:80px 0 }
-  nav { padding:0 24px }
 }
+
 @media(max-width:600px){
+  /* HERO */
+  .hero-left { padding:88px 20px 40px }
+  .hero-right { padding:40px 20px 48px }
+  .hero-bottom-strip { grid-template-columns:repeat(3,1fr) }
+  .hbs-num { font-size:22px }
+
+  /* ABOUT image taller on small phones */
+  .about-img { height:260px }
+
+  /* PRICING single col */
   .pricing-grid { grid-template-columns:1fr }
-  .hero-bottom-strip { grid-template-columns:1fr }
+
+  /* NICHE padding */
+  .niche-item { padding:32px 20px }
+
+  /* PROCESS */
+  .proc-row { grid-template-columns:40px 1fr; gap:16px; padding:28px 0 }
+  .proc-num { font-size:30px }
+
+  /* MODAL */
+  .pay-box { padding:40px 24px }
+  .pay-amt { font-size:44px }
+
+  /* TOPBAR */
+  .topbar { font-size:9px }
+
+  /* NAV */
+  .nav-btn { font-size:9px; padding:9px 16px }
+
+  /* FEATURES padding */
+  .feat-item { padding:36px 24px }
+
+  /* PROBLEM padding */
+  .prob-item { padding:28px 20px }
+  .prob-close { padding:28px 20px }
 }
+
+@media(max-width:400px){
+  .hero h1, .hero-h1 { font-size:52px }
+  .about-name { font-size:28px }
+  .nav-btn { display:none }
+}
+
 @media(prefers-reduced-motion:reduce){
   .rv { opacity:1;transform:none;transition:none }
   body { cursor:auto }
